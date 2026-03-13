@@ -6,7 +6,7 @@
         <div class="p-6 text-gray-900 dark:text-gray-100">
 
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Data Kategori</h2>
+                <h2 class="text-xl font-bold">Categories</h2>
 
                 <a href="{{ route('categories.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                     Tambah Kategori
@@ -28,7 +28,7 @@
                         <td class="px-4 py-2 border">{{ $loop->iteration}}</td>
                         <td class="px-4 py-2 border">{{ $category->name }}</td>
                         <td class="px-4 py-2 border">
-                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm">
+                            <a href="{{ route('categories.edit', $category->id) }}" class="bg-yellow-400 px-3 py-1 rounded">
                                 Edit
                             </a>
 
@@ -38,7 +38,7 @@
                             @csrf
                             @method('DELETE')
                             <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
-                                Hapus
+                                Delete
                             </button>
 
                             </form>
