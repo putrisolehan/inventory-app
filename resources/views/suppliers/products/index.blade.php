@@ -44,6 +44,8 @@
                         <th class="p-2 border">Kategori</th>
                         <th class="p-2 border">Supplier</th>
                         <th class="p-2 border">Harga</th>
+                        <th class="p-2 border">Stok</th>
+                        <th class="p-2 border">Deskripsi</th>
                         <th class="p-2 border">Aksi</th>
                     </tr>
                 </thead>
@@ -56,6 +58,27 @@
                         <td class="p-2 border">{{ $product->category->name }}</td>
                         <td class="p-2 border">{{ $product->supplier->name }}</td>
                         <td class="p-2 border">{{ $product->price }}</td>
+                        <td class="p-2 border">@if($product->stock == 0)
+                            <span class="bg-red-500 text-white px-2 py-1 rounded">
+                            Out of Stock
+                            </span>
+
+                            @elseif($product->stock <= 5)
+
+                            <span class="bg-yellow-500 text-white px-2 py-1 rounded">
+                            Low Stock
+                            </span>
+
+                            @else
+
+                            <span class="bg-green-500 text-white px-2 py-1 rounded">
+                            In Stock
+                            </span>
+
+                            @endif
+                        </td>
+                        <td class="p-2 border">{{ $product->description }}</td>
+
                         <td class="p-2 border">
 
                             <a href="{{ route('products.edit',$product->id) }}"
@@ -71,14 +94,9 @@
 
                                 <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
                                 onclick="return confirm('Delete this product?')">
-                                Delete
+                                    Delete
                                 </button>
                             </form>
-
-                            <a href="{{ route('product-sizes.index', $product->id) }}"
-                            class="bg-blue-400 px-3 py-1 rounded">
-                            Detail size
-                            </a>
                         </td>
                     </tr>
                     @endforeach

@@ -41,6 +41,16 @@
                 <input type="text" name="price" class="w-full border rounded px-3 py-2">
             </div>
 
+            <div class="mb-4">
+                <label class="block mb-1">Stok</label>
+                <input type="text" name="stock" class="w-full border rounded px-3 py-2">
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-1">Deskripsi</label>
+                <textarea name="description" class="w-full border rounded px-3 py-2"></textarea>
+            </div>
+
             <button class="bg-blue-500 text-white px-4 py-2 rounded">
                 Simpan
             </button>

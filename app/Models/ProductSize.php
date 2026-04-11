@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Supplier extends Model
+class ProductSize extends Model
 {
     protected $fillable = [
-        'name',
-        'phone',
-        'email',
-        'address',
+        'product_id',
+        'size',
+        'stock'
     ];
+
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
 
     public function stockIns() {
         return $this->hasMany(StockIn::class);

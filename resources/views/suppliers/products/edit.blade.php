@@ -43,6 +43,16 @@
                 <input type="text" name="price" value="{{ $product->price }}" class="w-full border rounded px-3 py-2">
             </div>
 
+            <div class="mb-4"> 
+                <label class="block mb-1">Stok</label>
+                <input type="text" name="stock" value="{{ $product->stock }}" class="w-full border rounded px-3 py-2">
+            </div>
+
+            <div class="mb-4"> 
+                <label class="block mb-1">Deskripsi</label>
+                <textarea name="description"  class="w-full border rounded px-3 py-2">{{ $product->description }}</textarea>
+            </div>
+
             <button class="bg-green-500 text-white px-4 py-2 rounded">
                 Update
             </button>
