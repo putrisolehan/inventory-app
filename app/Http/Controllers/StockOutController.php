@@ -2,18 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\StockOut;
 use App\Models\ProductSize;
-use Illuminate\Http\Request;
+use App\Exports\StockOutExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StockOutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $stockOuts = StockOut::with('productSize.product')->get();
+        $query = StockOut::with('product','productSize','supplier');
+
+       if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('date', [$request->start_date, $request->end_date]);
+        } else {
+            if ($request->filled('start_date')) {
+                $query->whereDate('date', '>=', $request->start_date);
+            }
+
+            if ($request->filled('end_date')) {
+                $query->whereDate('date', '<=', $request->end_date);
+            }
+        }
+
+        $stockOuts = $query->orderBy('date', 'desc')->get();
+
         return view('stock_outs.index', compact('stockOuts'));
     }
 
@@ -51,6 +68,11 @@ class StockOutController extends Controller
         StockOut::create($request->all());
 
         return redirect()->route('stock-out.index')->with('success', 'Stock berhasil dikurangi!');
+    }
+
+    public function exportOut(Request $request)
+    {
+        return Excel::download(new StockOutExport($request), 'stock-out.xlsx');
     }
 
     /**

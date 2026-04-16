@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="max-w-xl mx-auto mt-10">
-    <h2 class="text-2xl font-bold mb-5">Tambah Product</h2>
+    <h2 class="text-2xl font-bold mb-5">Tambah Produk</h2>
 
     <div class="bg-white shadow p-6 rounded">
         <form action="{{ route('products.store') }}" method="POST">

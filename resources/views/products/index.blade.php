@@ -5,10 +5,10 @@
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="flex justify-between items-center mb-5">
-            <h2 class="text-2xl font-bold">Products</h2>
+            <h2 class="text-2xl font-bold">Produk</h2>
 
             <a href="{{ route('products.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                            Tambah Product
+                            Tambah Produk
             </a>
         </div>
 
@@ -16,13 +16,13 @@
             <input 
             type="text"
             name="search"
-            placeholder="Search product..."
+            placeholder="Cari produk..."
             value="{{ request('search') }}"
             class="border p-2 rounded"
             >
 
             <select name="category" class="border p-2 rounded">
-                <option value="">All Category</option>
+                <option value="">Semua Kategori</option>
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}" @if(request()->get('category') == $category->id) selected @endif>
                     {{ $category->name }}
@@ -31,7 +31,7 @@
             </select>
 
             <button class="bg-blue-500 text-white px-4 py-2 rounded">
-                Search
+                Cari
             </button>
         </form>
 
@@ -60,7 +60,7 @@
 
                             <a href="{{ route('products.edit',$product->id) }}"
                             class="bg-yellow-400 px-3 py-1 rounded">
-                            Edit
+                            Ubah
                             </a>
                             
                             <form action="{{ route('products.destroy', $product->id) }}"
@@ -71,7 +71,7 @@
 
                                 <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
                                 onclick="return confirm('Delete this product?')">
-                                Delete
+                                Hapus
                                 </button>
                             </form>
 

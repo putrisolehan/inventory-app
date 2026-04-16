@@ -6,7 +6,7 @@
         <div class="p-6 text-gray-900 dark:text-gray-100">
 
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Categories</h2>
+                <h2 class="text-xl font-bold">Kategori</h2>
 
                 <a href="{{ route('categories.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                     Tambah Kategori

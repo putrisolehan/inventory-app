@@ -5,7 +5,7 @@
 
     <div class="bg-white shadow p-6 mb-6">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Dashboard
+            Halo, Admin
         </h2>
     </div>
 
@@ -40,7 +40,7 @@
         <div class="mt-8 bg-white p-6 rounded shadow">
             <h2 class="text-lg font-semibold mb-4">Stock Out Terbaru</h2>
 
-            <table class="w-full border">
+            <table class=" table-auto w-full border border-gray-300">
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="p-2">Produk</th>

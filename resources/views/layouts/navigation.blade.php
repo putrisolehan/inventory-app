@@ -3,11 +3,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
+
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
+                        I
+                    </div>
+                    <span class="font-bold text-lg">Inventory</span>
                 </div>
 
                 <!-- Navigation Links -->
@@ -16,11 +18,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="hover:scale-105">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="/categories" class="hover:scale-105">Category</x-nav-link>
+                    <x-nav-link href="/categories" class="hover:scale-105">Kategori</x-nav-link>
                     <x-nav-link href="/suppliers" class="hover:scale-105">Supplier</x-nav-link>
-                    <x-nav-link href="/products" class="hover:scale-105">Product</x-nav-link>
-                    <x-nav-link href="/stock-in" class="hover:scale-105">Stock In</x-nav-link>
-                    <x-nav-link href="/stock-out" class="hover:scale-105">Stock Out</x-nav-link>
+                    <x-nav-link href="/products" class="hover:scale-105">Produk</x-nav-link>
+                    <x-nav-link href="/stock-in" class="hover:scale-105">Barang Masuk</x-nav-link>
+                    <x-nav-link href="/stock-out" class="hover:scale-105">Barang Keluar</x-nav-link>
                 </div>
                 @endauth
             </div>

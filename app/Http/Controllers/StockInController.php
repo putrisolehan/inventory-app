@@ -7,17 +7,35 @@ use App\Models\StockIn;
 use App\Models\Product;
 use App\Models\ProductSize;
 use App\Models\Supplier;
+use App\Exports\StockInExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StockInController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $stockIns = StockIn::with('product','productSize', 'supplier')->get();
+        $query = StockIn::with('product','productSize','supplier');
+
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('date', [$request->start_date, $request->end_date]);
+        } else {
+            if ($request->filled('start_date')) {
+                $query->whereDate('date', '>=', $request->start_date);
+            }
+
+            if ($request->filled('end_date')) {
+                $query->whereDate('date', '<=', $request->end_date);
+            }
+        }
+
+        $stockIns = $query->orderBy('date', 'desc')->get();
+
         return view('stock_ins.index', compact('stockIns'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -51,6 +69,11 @@ class StockInController extends Controller
         $productSize->save();
 
         return redirect()->route('stock-in.index')->with('success','Stock berhasil ditambahkan!');
+    }
+
+    public function export(Request $request)
+    {
+        return Excel::download(new StockInExport($request), 'stock-in.xlsx');
     }
 
     /**

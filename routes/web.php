@@ -11,7 +11,7 @@ use App\Http\Controllers\StockOutController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
@@ -26,7 +26,11 @@ Route::middleware('auth')->group(function () {
         ->name('product-sizes.index');
     Route::resource('product-sizes', ProductSizeController::class)
         ->except(['index']);
+
+    Route::get('/stock-in/export', [StockInController::class, 'export'])->name('stock-in.export');    
     Route::resource('stock-in', StockInController::class);
+
+    Route::get('/stock-out/export', [StockOutController::class, 'exportOut'])->name('stock-out.export');
     Route::resource('stock-out', StockOutController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

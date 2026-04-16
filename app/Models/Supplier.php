@@ -16,4 +16,8 @@ class Supplier extends Model
     public function stockIns() {
         return $this->hasMany(StockIn::class);
     }
+
+    public function stockOuts() {
+        return $this->hasMany(StockIn::class);
+    }
 }
